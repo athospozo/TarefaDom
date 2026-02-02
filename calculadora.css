@@ -35,6 +35,8 @@ body {
 input {
     box-sizing: border-box;
 
+    background-color: azure;
+
     width: 40%;
     height: 17%;
 
@@ -42,6 +44,20 @@ input {
     border-radius: 8px;
 
     padding: 0 0.5rem;
+
+    transition: 0.5s;
+}
+
+/* estilizacao de passar por cima */
+input:hover {
+    transform: scale(1.05);
+}
+
+/* estilizacao de escrever */
+input:focus{
+    transform: scale(1.07);
+    
+    outline:none;
 }
 
 /* caixa */
