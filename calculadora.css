@@ -15,7 +15,7 @@ body {
 
     border-radius: 8px;
 
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
 }
 
 /* formatacao de cima */
@@ -46,6 +46,8 @@ input {
 
 /* caixa */
 .caixa {
+    box-sizing: border-box;
+
     width: 400px;
     height: 300px;
 
@@ -53,6 +55,7 @@ input {
 
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 0.5rem 1rem;
 
     border-radius: 8px;
 
@@ -68,5 +71,17 @@ input {
 
     border: none;
     border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+/* estilizacao de passar por cima */
+#bot_calcular:hover, #bot_clicar:hover {
+    transform: scale(1.05);
+}
+
+/* estilizacao do clique */
+#bot_calcular:active, #bot_clicar:active {
+    transform: scale(0.95);
 }
 
