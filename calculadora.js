@@ -1,22 +1,20 @@
 ///---------Funcoes relacionadas ao botao de adicionar nota ----------
-function AdicionaElemento (elemento) {
-    let caixa = document.querySelector (".caixa");
-    let texto = document.createElement ("p");
 
-    let quantidade = document.querySelectorAll(".notas").length;
+//pega o elemento do input:
+function ColetaElemento (){
 
-    texto.innerText = `A nota ${quantidade+1} foi: `;
+    // adicionando elemento de escrita:
+    let painel = document.querySelector ("#input");
 
-    let nota = document.createElement ("span");
-    nota.classList.add("notas");
-    nota.innerText = elemento;
+    let number = painel.value;
 
-    texto.append(nota);
+    nota = ChecarElemento(number);
 
-    caixa.append(texto);
+    // limpa o input:
+    painel.value = "";
 }
 
-// funcao para checar se o numero é valido:
+//checa se o numero é valido:
 function ChecarElemento (elemento) {
 
     // vendo se clicou com espaco vazio:
@@ -31,24 +29,35 @@ function ChecarElemento (elemento) {
     else if ((elemento < 0) || (elemento > 10))
         alert (`A nota digitada é inválida, por favor, insira uma nota válida`);
 
-    // caso o elemento seja valido 
+    // caso o elemento seja valido:
     else 
         AdicionaElemento (elemento);
 }
 
-function ColetaElemento (){
-    // adicionando elemento de escrita:
-    let painel = document.querySelector ("#input");
+//adiciona elemento a caixa:
+function AdicionaElemento (elemento) {
 
-    let number = painel.value;
+    //acesso ao html:
+    let caixa = document.querySelector (".caixa");
+    let texto = document.createElement ("p");
 
-    nota = ChecarElemento(number);
+    let quantidade = document.querySelectorAll(".notas").length;
 
-    painel.value = "";
+    texto.innerText = `A nota ${quantidade+1} foi: `;
+
+    //criando um span nota para facilitar o calculo da media depois:
+    let nota = document.createElement ("span");
+    nota.classList.add("notas");
+    nota.innerText = elemento;
+
+    texto.append(nota);
+
+    caixa.append(texto);
 }
 
 //------------- Funcoes relacionadas ao botao de calcular media ---------------
 
+//calcula a media:
 function CalcularMedia (){
 
     let notas = document.querySelectorAll(".notas");
@@ -64,6 +73,7 @@ function CalcularMedia (){
     ColocarMedia(media.toFixed(2));
 }
 
+//imprime a media na tela:
 function ColocarMedia (media){
     let local = document.getElementById ("media");
 
@@ -72,11 +82,14 @@ function ColocarMedia (media){
 
 //------------ Coisas mais generalistas --------------
 
-// adicionando variaveis:
+// adicionando variaveis dos botoes:
 const botaoAdicionar = document.getElementById("bot_clicar");
 const botaoCalcular = document.getElementById("bot_calcular");
 
 // adicionando acao para os botoes:
+
+//leva para as funcoes do botao de adicionar:
 botaoAdicionar.addEventListener ("click", ColetaElemento);
 
+//leva para as funcoes do botao de calcular:
 botaoCalcular.addEventListener ("click", CalcularMedia)
